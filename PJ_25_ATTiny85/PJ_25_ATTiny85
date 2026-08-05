@@ -1,0 +1,64 @@
+// Motor control pin
+const int motPin = 0;
+
+// Potentiometer pin
+const int potPin = A2;
+
+// Push button pin
+const int buttonPin = 3;
+
+// Indicating LED
+const int ledPin = 1;
+
+// Motor running flag
+bool motorRunning = false;
+
+void setup() {
+MCUSR &= ~(1<<WDRF);
+WDTCR |= (1<<WDCE) | (1<<WDE);
+WDTCR = 0x00;
+  pinMode(motPin, OUTPUT);
+  pinMode(buttonPin, INPUT_PULLUP); // Button to GND
+  pinMode(ledPin, OUTPUT);
+}
+
+void loop() {
+  // Check if button is pressed (LOW means pressed with INPUT_PULLUP)
+  if (digitalRead(buttonPin) == LOW) {
+    delay(200); // crude debounce
+    motorRunning = !motorRunning; // toggle
+    
+    // Wait for button release so it doesn't toggle multiple times
+    while (digitalRead(buttonPin) == LOW) {
+      delay(10);
+    }
+  }
+
+  // If running, set speed from pot; else stop motor
+  if (motorRunning) {
+    digitalWrite(ledPin, HIGH);
+    int potValue = analogRead(potPin);       // 0–1023
+    int motSpeed = map(potValue, 0, 1023, 0, 255); // torque starts at 150
+    analogWrite(motPin, motSpeed);
+  } else {
+    analogWrite(motPin, 0);
+    digitalWrite(ledPin, LOW);
+  }
+ /*for (int i=180; i < 255; i++){
+   analogWrite(motPin, i);
+   delay(100);            
+ }
+
+for (int i=255; i > 180; i--){
+   analogWrite(motPin, i);
+   delay(100);
+ }*/
+
+/*int potValue = analogRead(potPin);       // 0–1023
+    int motSpeed = map(potValue, 0, 1023, 150, 255); // torque starts at 150
+    analogWrite(motPin, motSpeed);*/
+
+
+}
+
+
