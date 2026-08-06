@@ -1,1 +1,97 @@
+# Pumpjack Project Parts List
 
+## Confirmed Main Components
+
+### Controller and Control Components
+
+- **1 × ATtiny85 microcontroller**
+  - Runs the pumpjack control sketch
+  - Reads the potentiometer and push button
+  - Generates the PWM motor-control signal
+  - Controls the indicating LED
+
+- **1 × IRFZ44N N-channel MOSFET**
+  - Switches the TT motor current
+  - Receives the PWM signal from the ATtiny85
+  - A logic-level MOSFET is recommended for improved performance
+
+- **1 × Breadboard potentiometer**
+  - Provides adjustable pumpjack speed
+  - Center terminal connects to analog input `A2`
+
+- **1 × Momentary push button**
+  - Starts and stops the pumpjack
+  - Connected between ATtiny85 pin `3` and ground
+  - Uses the ATtiny85 internal pull-up resistor
+
+- **1 × Indicating LED**
+  - Illuminates while the motor is commanded to run
+  - Connected to ATtiny85 pin `1`
+
+- **1 × 170-point mini breadboard**
+  - Holds the ATtiny85 control circuit, MOSFET, potentiometer, push button, and LED
+
+### Mechanical Components
+
+- **1 × 3D-printed pumpjack assembly**
+  - Base
+  - Walking beam
+  - Horsehead
+  - Crank
+  - Connecting linkage
+  - Counterweight components, if included
+  - Motor mounting components
+
+- **1 × TT geared DC motor**
+  - Installed inside the pumpjack
+  - Drives the crank and pumpjack linkage
+
+### Wiring and Power
+
+- **Breadboard jumper wires**
+  - Male-to-male jumpers for the breadboard circuit
+  - Longer wires may be needed between the breadboard and the motor
+
+- **DC power source**
+  - Must match the TT motor voltage
+  - Must provide sufficient motor starting current
+
+- **ATtiny85 programming hardware**
+  - USBasp, Arduino as ISP, or another compatible programmer
+  - Not required during normal operation after programming
+
+## Recommended Electrical Components
+
+These parts should be included even if they were not part of the first prototype:
+
+- **1 × Flyback diode**
+  - Examples: 1N4001–1N4007 or 1N5819
+  - Installed across the TT motor terminals
+
+- **1 × LED current-limiting resistor**
+  - Typical value: 220–1,000 Ω
+  - 330 Ω is a common choice
+
+- **1 × MOSFET gate resistor**
+  - Typical value: 100–220 Ω
+
+- **1 × MOSFET gate pull-down resistor**
+  - Typical value: 10 kΩ
+
+- **1 × 0.1 µF ceramic capacitor**
+  - Installed across the motor terminals to reduce electrical noise
+
+- **1 × 100 µF or larger electrolytic capacitor**
+  - Installed across the motor supply near the breadboard
+  - Helps reduce voltage dips when the motor starts
+
+## Optional Improvements
+
+- Logic-level N-channel MOSFET such as IRLZ44N or FQP30N06L
+- Soldered perfboard for a permanent circuit
+- Power switch
+- Screw terminals for motor and power wiring
+- Enclosure for the breadboard and controller
+- Rubber feet for the pumpjack base
+- Heat-shrink tubing
+- Cable ties or wire clips
