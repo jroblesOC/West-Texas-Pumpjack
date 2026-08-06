@@ -1,1 +1,33 @@
+# Bill of Materials — ATtiny85 Pumpjack
 
+| Item | Qty. | Component | Suggested Specification | Purpose | Status |
+|---:|---:|---|---|---|---|
+| 1 | 1 | ATtiny85 microcontroller | 8-pin AVR microcontroller | Main controller | Confirmed |
+| 2 | 1 | IRFZ44N MOSFET | N-channel power MOSFET, TO-220 | TT motor PWM switching | Confirmed |
+| 3 | 1 | TT geared DC motor | Voltage to match selected supply | Drives pumpjack mechanism | Confirmed |
+| 4 | 1 | Breadboard potentiometer | Approximately 10 kΩ linear | Motor-speed adjustment | Confirmed |
+| 5 | 1 | Momentary push button | Normally open, breadboard type | Start/stop toggle | Confirmed |
+| 6 | 1 | LED | Standard 3 mm or 5 mm LED | Motor-running indication | Confirmed |
+| 7 | 1 | Mini breadboard | 170 tie-point | Circuit mounting | Confirmed |
+| 8 | 1 set | 3D-printed pumpjack parts | PLA, PETG, or equivalent | Mechanical model | Confirmed |
+| 9 | As needed | Jumper wires | Male-to-male breadboard wires | Circuit connections | Confirmed |
+| 10 | 1 | DC power supply | Match motor/controller voltage and motor current | System power | Verify |
+| 11 | 1 | Flyback diode | 1N400x or 1N5819 | Protects MOSFET from motor inductive voltage | Recommended |
+| 12 | 1 | LED resistor | 330 Ω typical | Limits LED current | Recommended |
+| 13 | 1 | MOSFET gate resistor | 100–220 Ω | Limits gate charging current and ringing | Recommended |
+| 14 | 1 | MOSFET gate pull-down resistor | 10 kΩ | Keeps MOSFET off during startup/reset | Recommended |
+| 15 | 1 | Motor-noise capacitor | 0.1 µF ceramic | Reduces brush noise | Recommended |
+| 16 | 1 | Supply filter capacitor | 100–470 µF electrolytic | Reduces supply dips and resets | Recommended |
+| 17 | 1 | ATtiny85 programmer | USBasp, Arduino as ISP, or equivalent | Loads firmware | Required for programming |
+| 18 | 1 | USB cable / programming wiring | Type depends on programmer | Firmware upload connection | Required for programming |
+| 19 | Optional | Logic-level MOSFET | IRLZ44N or FQP30N06L | Improved low-voltage gate drive | Upgrade |
+| 20 | Optional | Perfboard or PCB | Sized for final circuit | Permanent assembly | Upgrade |
+
+## BOM Notes
+
+1. The exact TT motor voltage and power-supply rating should be entered after verifying the motor label or original purchase information.
+2. The IRFZ44N may work in the prototype, but it is not the preferred MOSFET for direct logic-level gate drive.
+3. The controller and motor must share a common ground.
+4. The motor should never be powered through an ATtiny85 I/O pin.
+5. Add the flyback diode before long-term operation to protect the MOSFET and microcontroller.
+6. The 3D-printed component count depends on the pumpjack model used.
