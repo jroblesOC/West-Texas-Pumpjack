@@ -1,4 +1,4 @@
-[README (1).md](https://github.com/user-attachments/files/30805000/README.1.md)# West-Texas-Pumpjack
+West-Texas-Pumpjack
 Desktop Pumpjack Powered by TT Motor and ATTiny85 MCU
 
 ATtiny85 Mini Pumpjack
